@@ -1,12 +1,14 @@
 import path from 'path';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
+const mode = process.env.NODE_ENV || 'development';
+const __dirname = path.resolve();
+
 const webpackConfig = {
-    mode: 'development',
+    mode,
     devtool: 'inline-source-map',
-    target: 'web',
     output: {
-        path: path.resolve() + path.join('dist', 'public'),
+        path: path.join(__dirname, 'dist', 'public'),
         publicPath: '/assets/',
     },
     resolve: {

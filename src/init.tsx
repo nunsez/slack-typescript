@@ -14,8 +14,10 @@ export const InitApp = (socket: SocketIOClient.Socket): JSX.Element => {
             <App>
                 <Switch>
                     <Route exact path="/" component={Chat} />
+
                     <Route path="/login" component={Login} />
                     <Route path="/signup" component={Signup} />
+
                     <Route path="*" component={PageNotFound} />
                 </Switch>
             </App>

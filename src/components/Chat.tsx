@@ -1,3 +1,3 @@
 import React from 'react';
 
-export const Chat: React.FC = () => null;
+export const Chat: React.FC = () => <div>Chat</div>;

@@ -6,15 +6,15 @@ interface User {
     confirmPassword?: string;
 }
 
-export const getLoginSchema = (): yup.SchemaOf<User> => {
-    const schema = yup.object({
-        username: yup.string().min(3), // TODO make validation
-        password: yup.string().min(3), // TODO make validation
-        confirmPassword: yup.string().strip(),
-    });
+// export const getLoginSchema = (): yup.SchemaOf<User> => {
+//     const schema = yup.object({
+//         username: yup.string().min(3), // TODO make validation
+//         password: yup.string().min(3), // TODO make validation
+//         confirmPassword: yup.string().strip(),
+//     });
 
-    return schema;
-};
+//     return schema;
+// };
 
 export const getSignupSchema = (): yup.SchemaOf<User> => {
     const schema = yup.object({

@@ -1,6 +1,6 @@
 {
   "name": "@hexlet/code",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "description": "",
   "main": "src/index.ts",
   "type": "module",
@@ -21,6 +21,7 @@
     "@types/react-router-dom": "^5.1.7",
     "@types/socket.io-client": "^1.4.36",
     "@types/yup": "^0.29.11",
+    "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "core-js": "^3.10.1",
     "debug": "^4.3.1",

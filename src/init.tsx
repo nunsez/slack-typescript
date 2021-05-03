@@ -7,8 +7,10 @@ import { Login } from './components/Login';
 import { Signup } from './components/Signup';
 import { PageNotFound } from './components/PageNotFound';
 
+
 export const InitApp = (socket: SocketIOClient.Socket): JSX.Element => {
     console.log(socket);
+
     return (
         <BrowserRouter>
             <App>

@@ -1,11 +1,16 @@
 import { useFormik } from 'formik';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
+import { Redirect } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
+import axios from 'axios';
 
 import { getSignupSchema } from '../utils/validators';
+import { AuthContext } from '../utils/authContext';
 
 export const Signup: React.FC = () => {
+    const { isAuthorized, setAuthorized }  = useContext(AuthContext);
     const nameRef: React.MutableRefObject<HTMLInputElement> = useRef();
+
     const f = useFormik({
         initialValues: {
             username: '',
@@ -13,7 +18,17 @@ export const Signup: React.FC = () => {
             confirmPassword: '',
         },
         validationSchema: getSignupSchema(),
-        onSubmit: () => null,
+        onSubmit: async ({ username, password }) => {
+            const payload = { username, password };
+
+            try {
+                const response = await axios.post('/api/v1/signup', payload);
+                localStorage.setItem('user', JSON.stringify(response.data));
+                setAuthorized(true);
+            } catch (e) {
+                console.warn('signup error', e); // TODO handle this error
+            }
+        },
     });
 
     useEffect(() => {
@@ -21,6 +36,8 @@ export const Signup: React.FC = () => {
     }, []);
 
     return (
+        <>
+        {isAuthorized && <Redirect to="/" />}
         <div className="container-fluid">
             <div className="row justify-content-center pt-5">
                 <div className="col-sm-4">
@@ -86,5 +103,6 @@ export const Signup: React.FC = () => {
                 </div>
             </div>
         </div>
+        </>
     );
 };

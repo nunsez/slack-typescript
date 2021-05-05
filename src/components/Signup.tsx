@@ -35,9 +35,11 @@ export const Signup: React.FC = () => {
         nameRef.current.focus();
     }, []);
 
+    if (isAuthorized) {
+        return <Redirect to="/" />;
+    }
+
     return (
-        <>
-        {isAuthorized && <Redirect to="/" />}
         <div className="container-fluid">
             <div className="row justify-content-center pt-5">
                 <div className="col-sm-4">
@@ -103,6 +105,5 @@ export const Signup: React.FC = () => {
                 </div>
             </div>
         </div>
-        </>
     );
 };
